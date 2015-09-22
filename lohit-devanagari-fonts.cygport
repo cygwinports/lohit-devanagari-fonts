@@ -1,7 +1,7 @@
 inherit font
 
-NAME="font-lohit-devanagari-ttf"
-VERSION=2.94.0
+NAME="lohit-devanagari-fonts"
+VERSION=2.95.1
 RELEASE=1
 CATEGORY="X11"
 SUMMARY="Lohit Devanagari font"
@@ -11,6 +11,10 @@ HOMEPAGE="https://fedorahosted.org/lohit/"
 SRC_URI="https://fedorahosted.org/releases/l/o/lohit/lohit-devanagari-${VERSION}.tar.gz"
 SRC_DIR="lohit-devanagari-${VERSION}"
 
+ARCH=noarch
+
+OBSOLETES="font-lohit-devanagari-ttf"
+
 src_compile() {
 	lndirs
 	cd ${B}
@@ -19,7 +23,7 @@ src_compile() {
 
 src_install() {
 	cd ${B}
-	fontinto TTF
+	fontinto ${NAME%-fonts}
 	dofont *.ttf
 
 	dofontconf *.conf
